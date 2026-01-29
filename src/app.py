@@ -1,7 +1,4 @@
-import os
-from bs4 import BeautifulSoup
 import requests
-import time
 import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -16,10 +13,10 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
 
-response = requests.get(url, headers=headers)
+response = requests.get(url, headers=headers, timeout=10)
 
 if response.status_code == 200:
-  print("Status:", response.status_code)
+    print("Status:", response.status_code)
 
 # Step 2: Extract tables with pandas
 html = io.StringIO(response.text)
